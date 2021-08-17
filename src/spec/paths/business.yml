@@ -1,0 +1,26 @@
+/yelp?request=business:
+    get:
+        summary: Get yelp businesses data by Id
+        parameters:
+            - in: query
+              name: request
+        requestBody:
+            description: Request Body Schema
+            required: true
+            content:
+                application/json:
+                    schema:
+                        type: object
+                        properties:
+                            businessId:
+                                type: string
+                        required:
+                            - businessId
+
+                    example:
+                        businessId: "vR4YKSfEIf3-BmICgjpPxg"
+        responses:
+            "200":
+                description: A Yelp Object containing information about the specified business
+        tags:
+            - yelp

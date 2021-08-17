@@ -1,0 +1,114 @@
+openapi: 3.0.0
+servers:
+  - url: https://github.com/agnishcc/khonsu-recommendation-engine
+    description: Github
+info:
+  description: |
+    This is the khonsu-recommendation-engine
+  version: 0.0.1
+  title: Khonsu Recommendation Engine
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: API Support
+    email: exmaple@email.com
+    url: https://github.com/agnishcc/khonsu-recommendation-engine
+  x-logo:
+    url: https://www.khonsu.ai/images/Khonsu-Logo-p-500.png
+    altText: Khonsu Logo
+externalDocs:
+  description: Find out how to create Github repo for your OpenAPI spec.
+  url: https://github.com/Rebilly/generator-openapi-repo
+tags:
+  - name: yelp
+    description: Everything about the Yelp endpoint
+    x-displayName: Yelp
+x-tagGroups:
+  - name: backend
+    tags:
+      - yelp
+paths:
+  /yelp?request=business:
+    get:
+      summary: Get yelp businesses data by Id
+      parameters:
+        - in: query
+          name: request
+      requestBody:
+        description: Request Body Schema
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessId:
+                  type: string
+              required:
+                - businessId
+            example:
+              businessId: vR4YKSfEIf3-BmICgjpPxg
+      responses:
+        '200':
+          description: A Yelp Object containing information about the specified business
+      tags:
+        - yelp
+  /yelp?request=delivery:
+    get:
+      summary: Find restaurants that can deliver
+      parameters:
+        - in: query
+          name: request
+      requestBody:
+        description: Request Body Schema
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                latitude:
+                  type: string
+                longitude:
+                  type: string
+                openNow:
+                  type: boolean
+                expandSearch:
+                  type: boolean
+                radiusMultipler:
+                  type: integer
+              required:
+                - latitude
+                - longitude
+            example:
+              latitude: '40.76569690547887'
+              longitude: '-73.01529188254928'
+      responses:
+        '200':
+          description: A list of yelp restaurants
+      tags:
+        - yelp
+  /path:
+    get:
+      summary: PATH
+      parameters:
+        - in: query
+          name: request
+      requestBody:
+        description: Request Body Schema
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessId:
+                  type: string
+              required:
+                - businessId
+            example:
+              businessId: vR4YKSfEIf3-BmICgjpPxg
+      responses:
+        '200':
+          description: A Yelp Object containing information about the specified business
+      tags:
+        - yelp
